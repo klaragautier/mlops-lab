@@ -1,7 +1,3 @@
-Parfait ⚙️ Voici la **version finale professionnelle** en **Markdown**, claire, homogène et prête à copier-coller dans ton README.md, ta doc MkDocs ou ton notebook d’introduction à MLOps 👇
-
----
-
 # Environment and Dependency Management
 
 ## Overview
