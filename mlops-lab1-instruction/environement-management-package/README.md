@@ -83,7 +83,7 @@ Learn more:
 
 ### Step 1 — Create a Conda Environment
 
-From the root directory of your project (e.g., `mlops-lab`):
+From the root directory of your project `mlops-lab`:
 
 ```bash
 conda env create -f conda.yml
@@ -128,7 +128,7 @@ poetry env info
 Add new dependencies to `pyproject.toml` and install them:
 
 ```bash
-poetry add poetry-plugin-export pandas uvicorn gunicorn
+poetry add poetry-plugin-export pandas numpy uvicorn gunicorn uvicorn dvc hydra-core poetry
 ```
 
 Alternatively, you can add packages using other managers:
@@ -168,7 +168,7 @@ conda doctor -n mlops_env
 Check for any dependency conflicts within your environment:
 
 ```bash
-pip check
+pip check 
 ```
 
 ---
