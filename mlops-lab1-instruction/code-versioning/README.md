@@ -1,118 +1,152 @@
 
 # Lab 1 — Code Versioning with Git
 
-##  Overview
+## Overview
 
-**Code versioning** is the practice of tracking and managing changes to your source code over time using a Version Control System (VCS), most commonly **Git**.
-It’s the backbone of **collaborative, reproducible, and auditable** workflows in MLOps and Data Science.
+**Code versioning** tracks and manages changes to your source code using a Version Control System (VCS), most commonly **Git**.
+Version control is a system that records changes to a file or set of files over time so that you can recall specific versions later.
+It is essential for **collaborative, reproducible, and auditable** workflows in MLOps and Data Science.
 
----
 
 ## Objectives
 
-By the end of this lab, students will be able to:
+By the end of this lab, you will be able to:
 
-* Understand and use **Git fundamentals** (commits, branches, merges, tags)
-* Differentiate between **staged and unstaged** changes
-* Use **diffs and logs** to explore code evolution
-* Write **unit tests** and run them with `pytest`
-* Apply **clean version control** practices with `.gitignore`
-* Collaborate and manage repositories like a professional **MLOps engineer**
+* Use **Git fundamentals**: commits, branches, merges, tags
+* Understand **staged vs unstaged** changes
+* Explore code evolution with **diffs and logs**
+* Write and run **unit tests** with `pytest`
+* Apply **clean version control** with `.gitignore`
+* Build a **reproducible preprocessing script**
+* Follow a workflow aligned with **MLOps best practices**
 
 ---
 
-##  Prerequisites
+## Prerequisites
 
-Make sure you have the following installed and configured:
+Make sure the following are installed:
 
-* Python (≥=3.11)
 * Git
-* Familiarity with Python basics (functions, DataFrames)
-* Access to:
+* Python (familiarity with functions, DataFrames, pytest)
+* Resources:
 
+  * [About Git](https://git-scm.com/about)
   * [Git Cheat Sheet](https://git-scm.com/cheat-sheet)
   * [Pandas Documentation](https://pandas.pydata.org/docs/reference/index.html)
 
 ---
 
-## Getting Started
+## Part I — Preprocessing Script
 
-### Step 1 — Fork and Clone the Repository
+### Step 1 — Navigate to the Notebook
 
 ```bash
-git clone https://github.com/TouyeAchille/mlops-lab.git
-cd mlops-lab
+cd notebook
+```
+
+### Step 2 — Complete the Notebook
+
+Open:
+
+```
+eda.ipynb
+```
+
+Fill in the `"your code here"` placeholders.
+
+### Step 3 — Check Git Status
+
+```bash
 git status
 ```
 
-This verifies that your working directory is under version control.
+### Step 4 — Stage the Notebook
+
+```bash
+git add eda.ipynb
+```
+
+### Step 5 — Commit Changes
+
+```bash
+git commit -m "notebook: data preprocessing remove duplicates and strip whitespace"
+```
 
 ---
 
-## Part I — Complete and Run the Preprocessing Script
+### Step 6 — Modularize Notebook Code
 
-### Step 2 — Navigate to the Preprocessing Directory
+Navigate to the preprocessing script directory:
 
 ```bash
 cd lab1/src/lab1/data_preprocessing
 ```
 
-### Step 3 — Complete the Code
+### Step 7 — Complete the Preprocessing Script
 
-Open and complete the script:
+Open:
 
 ```
-data_preprocessing.py
+preprocessing.py
 ```
 
-Add the missing logic where indicated by `"your code here"`.
+Fill in `"your code here"` placeholders.
 
-### Step 4 — Run the Script
+### Step 8 — Run the Script
 
 ```bash
-python data_preprocessing.py --input_data_path ../../../../datastores/raw_csv_data/census.csv --output_data_path clean_census.csv
+python preprocessing.py --input_data_path ../../../../datastores/raw_csv_data/census.csv --output_data_filename clean_census.csv
 ```
 
-Observe the logs and verify that a cleaned dataset is generated.
+Or using Poetry:
+
+```bash
+poetry run python eda.py --input_data_path ../../../datastores/raw_data/census.csv --output_data_filename clean_census.csv
+```
+
+Verify that a cleaned dataset is generated.
 
 ---
 
-## Part II — Version Your Code with Git
+## Part II — Git Versioning
 
-### Step 5 — Check the Status
+### Step 9 — Check Git Status
 
 ```bash
 git status
 ```
 
-### Step 6 — Stage the File
+### Step 10 — Stage Script
 
 ```bash
-git add data_preprocessing.py
-git status
+git add preprocessing.py
 ```
 
-### Step 7 — Commit with a Descriptive Message
+### Step 11 — Commit Script
 
 ```bash
 git commit -m "data preprocessing: remove duplicates and strip whitespace in DataFrame"
+```
+
+### Step 12 — Check Status Again
+
+```bash
 git status
 ```
 
-> Tip: Commit messages should follow the format
-> **`<scope>: <concise description>`**
+> Tip: Use clear commit messages: **`<scope>: <concise description>`**
 
 ---
 
-## Part III — Explore Changes and History
+## Part III — Explore Changes
 
-### Step 8 — View Unstaged or Staged Changes
+### Step 13 — View Unstaged/Staged Changes
 
 ```bash
 git diff
 ```
 
-### Step 9 — Explore Commit History
+### Step 14 — Explore Commit History
 
 ```bash
 git log --oneline
@@ -121,63 +155,62 @@ git log --oneline --stat
 
 ---
 
-## Part IV — Push Your Work
+## Part IV — Push to Remote Repository
 
-### Step 10 — Push Changes to Remote
+### Step 15 — Push Changes
 
 ```bash
 git push origin master
 ```
+This command sends your local commits on the master branch to the remote repository named origin.
+
+Next Step:
+
+Go to your remote repository on GitHub in a browser to verify that your changes have been successfully uploaded. You should see your latest commits and updated files
 
 ---
 
-##  Key Configuration Files
+## Part V — Unit Tests
 
-| File           | Purpose                                                        |
-| -------------- | -------------------------------------------------------------- |
-| `.gitignore`   | Excludes unnecessary files (e.g. `__pycache__/`, `.env`, logs) |
-| `~/.gitconfig` | Global Git configuration                                       |
-| `.git/config`  | Local repository configuration                                 |
-
----
-
-## Part V — Add and Run Unit Tests
-
-### Step 11 — Navigate to the Test Directory
+### Step 16 — Navigate to Tests Directory
 
 ```bash
-cd lab1/tests/unit_tests
+cd lab1/tests
 ```
 
-### Step 12 — Complete the Test Scripts
+### Step 17 — Complete Test Scripts
 
-Complete the following:
+Fill in `"your code here"` in:
 
 * `test_preprocessing.py`
 * `conftest.py`
 
-Each contains `"your code here"` placeholders for students to fill in.
-
-### Step 13 — Run All Tests
+### Step 18 — Run Tests
 
 ```bash
-pytest -vv lab1/src/tests/unit_tests/
+pytest -vv tests/unit_tests/
 ```
 
- Fix any failing tests until all pass successfully.
+Or using Poetry:
+
+```bash
+poetry run pytest -vv unit_tests/
+```
+
+Fix failing tests until all pass.
 
 ---
 
-## Part VI — Commit and Push Your Tests
+## Part VI — Commit & Push Tests
 
-### Step 14 — Stage and Commit
+### Step 19 — Stage and Commit Tests
 
 ```bash
-git add conftest.py test_preprocessing.py
+git add unit_tests/conftest.py unit_tests/test_preprocessing.py
 git commit -m "add pytest configuration and preprocessing unit tests"
 ```
 
-### Step 15 — Review and Push
+### Step 20 — Review and Push
 
 ```bash
 git diff
@@ -187,15 +220,32 @@ git push origin master
 
 ---
 
-##  Summary
+## Key Configuration Files
 
-At the end of this lab, you should have:
-
-1. A **clean preprocessing script** with reproducible transformations
-2. Properly **versioned code** in Git
-3. **Passing unit tests** for validation
-4. A workflow aligned with **MLOps best practices**
+| File           | Purpose                                                   |
+| -------------- | --------------------------------------------------------- |
+| `.gitignore`   | Excludes unnecessary files (`__pycache__/`, `.env`, logs) |
+| `~/.gitconfig` | Global Git configuration                                  |
+| `.git/config`  | Local repository configuration                            |
 
 ---
 
+## Learn More
 
+Learn about **branches, tags, and merges** to collaborate and manage repositories like a professional **MLOps engineer**: [About Git](https://git-scm.com/about)
+
+---
+
+If you want, I can also make a **version “à trous”** of this lab, where all Git commands are blanked out for students to fill. It’s very effective for hands-on practice.
+
+Do you want me to do that next?
+
+ii
+
+## Learn more cobaboration
+
+about branche, tags merge for Collaborate and manage repositories like a professional **MLOps engineer**
+ 
+you can collaborate with different groups of people in different ways simultaneously within the same project
+
+ [About Git](https://git-scm.com/about)
