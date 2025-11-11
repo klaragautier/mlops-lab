@@ -5,17 +5,13 @@
 Maintaining high code quality ensures **readability, maintainability, and consistency** across the project.
 In this section, you’ll learn how to format, lint, and check your code manually and automatically using **Black**, **isort**, **Flake8**, and **Pre-commit**.
 
----
-
 ## Getting Started
 
 ### Step 1 – Navigate to the Project Directory
 
 ```bash
-cd mlops-lab/lab1/src/lab1/data_preprocessing
+cd lab1/src/lab1/data_preprocessing
 ```
-
----
 
 ##  Run Code Quality Checks Manually
 
