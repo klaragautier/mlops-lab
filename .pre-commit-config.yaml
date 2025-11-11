@@ -1,0 +1,80 @@
+# ------------------------------
+# .pre-commit-config.yaml
+# ------------------------------
+# Pre-commit configuration file that defines hooks
+# for linting, formatting, and security scanning.
+
+repos:
+  # -------------------------------------------
+  # 1. Basic file checks: YAML, TOML, EOF, whitespace
+  # -------------------------------------------
+  - repo: https://github.com/pre-commit/pre-commit-hooks.git
+    rev: v5.0.0
+    hooks:
+       - id: check-yaml              # check YAML file validity
+       - id: check-toml              # check TOML file validity
+       - id: end-of-file-fixer       # ensure files end with a newline
+       - id: trailing-whitespace     # remove trailing whitespace
+    
+
+  # -------------------------------------------
+  # 2. Import sorting
+  # -------------------------------------------
+  - repo: https://github.com/PyCQA/isort.git
+    rev: 6.1.0
+    hooks:
+      - id: isort
+
+  # -------------------------------------------
+  # 3. AutoPEP8 formatter
+  # -------------------------------------------
+  - repo: https://github.com/hhatto/autopep8.git
+    rev: v2.3.1
+    hooks:
+      - id: autopep8
+
+  # -------------------------------------------
+  # 4. Black code formatter
+  # -------------------------------------------
+  - repo: https://github.com/psf/black.git
+    rev: your code here
+    hooks:
+      - id: your code here
+
+  # -------------------------------------------
+  # 5. Linting with Flake8
+  # -------------------------------------------
+  - repo: https://github.com/PyCQA/flake8.git
+    rev: your code here
+    hooks:
+      - id: your code here
+        args: ["--extend-ignore=your code here"]  # customize ignored rules
+
+  # -------------------------------------------
+  # 6. Ruff linter and formatter (fast Python tool)
+  # -------------------------------------------
+  - repo: https://github.com/astral-sh/ruff-pre-commit.git
+    rev: your code here
+    hooks:
+      - id: your code here       # run Ruff lint
+        types_or: [python, pyi]
+        args: [--fix]
+      - id: your code here       # run Ruff format
+        types_or: [python, pyi]
+        args: [--fix]
+
+  # -------------------------------------------
+  # 7. Secret scanning / security (Gitleaks)
+  # -------------------------------------------
+  - repo: https://github.com/gitleaks/gitleaks.git
+    rev: your code here
+    hooks:
+      - id: your code here
+
+  # -------------------------------------------
+  # 8. Secret scanning for commits (Talisman)
+  # -------------------------------------------
+  - repo: https://github.com/thoughtworks/talisman.git
+    rev: your code here
+    hooks:
+      - id: your code here
