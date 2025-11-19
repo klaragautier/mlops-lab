@@ -92,6 +92,22 @@ def clean_data(df: pd.DataFrame) -> pd.DataFrame:
     """
     logger.info("Cleaning dataset...")
     # 👉 YOUR CODE HERE:
+    # Strip whitespace from column names
+    df.columns = df.columns.str.strip()
+
+    # Strip whitespace from string columns
+    obj_cols = df.select_dtypes(include="object").columns
+    df[obj_cols] = df[obj_cols].apply(lambda s: s.str.strip())
+
+    # Drop duplicates
+    df = df.drop_duplicates()
+
+    # Drop rows with missing values
+    df = df.dropna()
+
+    logger.info(f"Cleaned dataset shape: {df.shape}")
+
+    return df
     # - Strip column names (use df.columns.str.strip())
     # - Remove duplicates (use df.drop_duplicates())
     # - Drop missing values (use df.dropna())
@@ -112,6 +128,14 @@ def save_data(df: pd.DataFrame, output_data_filename: str) -> Path:
         Path: The path where the cleaned file was saved.
     """
     # 👉 YOUR CODE HERE:
+    output_path = OUTPUT_DIR / output_data_filename
+    df.to_csv(output_path, index=False)
+
+    logger.info(f"Saved cleaned dataset to: {output_path}")
+
+    return output_path
+
+
     # - Define output_path = OUTPUT_DIR / output_data_filename
     # - Save DataFrame to CSV (index=False)
     # - Add logging.info message for confirmation
@@ -162,6 +186,15 @@ def main() -> None:
     args = parse_arguments()
 
     # 👉 YOUR CODE HERE:
+    # Load raw data
+    df_raw = load_data(args.input_data_path)
+
+    # Clean dataset
+    df_clean = clean_data(df_raw)
+
+    # Save cleaned dataset
+    save_data(df_clean, args.output_data_filename)
+
     # - Call load_data() with args.input_data_path
     # - Call clean_data() on the loaded DataFrame
     # - Call save_data() with cleaned DataFrame and args.output_data_filename
