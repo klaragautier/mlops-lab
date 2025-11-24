@@ -1,0 +1,23 @@
+# ------------------------------
+# .pre-commit-config.yaml
+# ------------------------------
+
+"""Ce fichier sert à configurer l'outils pre-commit.
+Ce fichier sert à automatiser les vérifications et corrections de code avant chaques git commit.
+Il empêche donc d'envoyer du mauvais code dans git.
+
+L'outil pre-commit fait tourner des hooks a chaque fois qu'on fait git commit
+
+On a remplacé les rev par les dernières versions stables et compatibles.
+
+Les hooks sont des scripts que Git ou pre-commit exécute automatiquement à certains moments, comme avant un commit.
+Ils servent à vérifier, corriger ou bloquer des commits qui ne respectent pas certaines règles.
+Grâce à eux, le code reste propre, cohérent et sans erreurs simples ni secrets accidentels."""
+
+# ------------------------------
+# ./notebook/eda.ipynb
+# ------------------------------
+
+"""Ce fichier sert à faire l'Exploratory Data Analysis (EDA), c'est à dire analyser et comprendre le dataset.
+Il permet de tester le code, visualiser les données, nettoyer les colonnes et préparer ton pipeline.
+C'est une étape avant de transformer le travail en scripts Pythons propres pour l'usage MLOps."""

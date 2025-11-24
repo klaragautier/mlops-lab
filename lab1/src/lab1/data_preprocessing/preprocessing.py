@@ -12,21 +12,19 @@ Usage Example:
     python data_preprocessing.py --input_data_path data/raw/raw_dataset.csv --output_data_path clean_dataset.csv
 """
 
-from pathlib import Path
-from typing import Union
-import pandas as pd
-import numpy as np
-import os
-import sys
 import argparse
 import logging
+import sys
+from pathlib import Path
+from typing import Union
 
+import pandas as pd
 
 # -------------------------------------------------------------------
 #  Global Configuration
 # -------------------------------------------------------------------
 PROJECT_ROOT = Path(__file__).resolve().parents[4]
-DATASTORE_DIR = PROJECT_ROOT / "datastores" 
+DATASTORE_DIR = PROJECT_ROOT / "datastores"
 
 OUTPUT_DIR = DATASTORE_DIR / "clean_data"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -49,6 +47,7 @@ logger = logging.getLogger("data_preprocessing")
 
 logger.info(f"PROJECT_ROOT: {PROJECT_ROOT}")
 
+
 # -------------------------------------------------------------------
 #  Functions
 # -------------------------------------------------------------------
@@ -69,7 +68,7 @@ def load_data(input_data_path: Union[str, Path]) -> pd.DataFrame:
         df = pd.read_csv(input_path)
         logger.info(f"Successfully loaded dataset with shape {df.shape}")
         return df
-    
+
     except FileNotFoundError:
         logger.error(f"Input file not found: {input_path}")
         sys.exit(1)
@@ -134,7 +133,6 @@ def save_data(df: pd.DataFrame, output_data_filename: str) -> Path:
     logger.info(f"Saved cleaned dataset to: {output_path}")
 
     return output_path
-
 
     # - Define output_path = OUTPUT_DIR / output_data_filename
     # - Save DataFrame to CSV (index=False)

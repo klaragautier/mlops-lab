@@ -13,7 +13,7 @@ In this section, you’ll learn how to **format**, **lint**, and **validate** yo
 * **Black** — automatic code formatter
 * **isort** — organizes your imports cleanly
 * **Flake8** — checks code style and detects common errors
-* **Pre-commit** — automates these checks each time you commit code 
+* **Pre-commit** — automates these checks each time you commit code
 
 Learn more: [https://pre-commit.com](https://pre-commit.com)
 
@@ -24,7 +24,7 @@ Learn more: [https://pre-commit.com](https://pre-commit.com)
 ### Step 1 — Navigate to the Data Preprocessing Directory
 
 ```bash
-cd lab1/src/lab1/data_preprocessing
+cd lab1/src/lab1/data_preprocessing #ok
 ```
 
 Here, you’ll find your main preprocessing script — this is where you’ll practice code quality checks.
@@ -40,7 +40,7 @@ Let’s start by running each tool **manually** to understand what it does.
 ### 1. Format Code with **Black**
 
 ```bash
-black preprocessing.py
+black preprocessing.py #ok
 ```
 
 **What it does:**
@@ -54,7 +54,7 @@ It enforces a clean, uniform style — no debates about formatting!
 ### 2. Sort Imports with **isort**
 
 ```bash
-isort preprocessing.py
+isort preprocessing.py #ok
 ```
 
 **What it does:**
@@ -71,7 +71,7 @@ isort organizes your `import` statements automatically:
 ###  3. Lint Code with **Flake8**
 
 ```bash
-flake8 preprocessing.py
+flake8 preprocessing.py #ok
 ```
 
 **What it does:**
@@ -96,25 +96,28 @@ That’s where **Pre-commit** comes in: it ensures your code is clean **before e
 ### Step 1 — Move to the Project Root
 
 ```bash
-cd mlops-lab
+cd mlops-lab #ok
 ```
 
 ---
 
 ### Step 2 — Configure `.pre-commit-config.yaml`
 
-Check that your configuration file defines the necessary hooks. Ensure your `.pre-commit-config.yaml` file includes all necessary hooks (e.g., black, isort, flake8, end-of-file-fixer, etc.). 
+Check that your configuration file defines the necessary hooks. Ensure your `.pre-commit-config.yaml` file includes all necessary hooks (e.g., black, isort, flake8, end-of-file-fixer, etc.).
 
 `Edit or complete it where indicated by ## your code here`
 
 ---
+```bash
+ #ok
+```
 
 ### Step 3 — Run Pre-commit Hooks Manually
 
 You can trigger all code quality checks at once:
 
 ```bash
-pre-commit run --all-files
+pre-commit run --all-files   #ok
 ```
 
 or with Poetry:
@@ -135,7 +138,7 @@ poetry run pre-commit run --all-files
 Install pre-commit so that it runs automatically whenever you make a Git commit:
 
 ```bash
-pre-commit install
+pre-commit install   #ok
 ```
 
 or (if using Poetry):
@@ -153,7 +156,7 @@ poetry run pre-commit install
 To ensure you’re using the latest versions of each hook:
 
 ```bash
-pre-commit autoupdate
+pre-commit autoupdate  #ok
 ```
 
 or with Poetry:
@@ -169,7 +172,7 @@ poetry run pre-commit autoupdate
 When you add new hooks or update existing ones, always run them on all files once to ensure consistency:
 
 ```bash
-pre-commit run --all-files
+pre-commit run --all-files #ok
 ```
 
 or
@@ -177,4 +180,3 @@ or
 ```bash
 poetry run pre-commit run --all-files
 ```
-
